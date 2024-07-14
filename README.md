@@ -62,10 +62,7 @@ class EncuestaMain {
         return this.encuestas;
     }
 
-    // Método para presentar todas las encuestas y recoger las respuestas
     presentarEncuestas() {
-
-        //Mediante este FOR se valida que el total de encuestas instanciadas estén respondidas, caso contrario, se insiste hasta finalizar.
         for (let encuesta of this.encuestas) {
             let respondida = false;
             while (!respondida) {
@@ -75,8 +72,6 @@ class EncuestaMain {
         this.registrarResultados();
         alert("Encuestas completadas. Gracias por participar.");
     }
-
-    // Método para registrar los resultados de las encuestas en la consola
     registrarResultados() {
         console.log("Resultados de las encuestas:");
         for (let encuesta of this.encuestas) {
@@ -85,4 +80,46 @@ class EncuestaMain {
     }
 }
 ```
+Para probar el sistema, asignaremos los valores de los arreglos a las constantes nombres,preguntas y opciones. En este caso, haremos encuestas basadas en el cuidado de mascotas.
+```javascript
+const nombres = [
+    "Encuesta sobre Mascotas",
+    "Encuesta sobre Preferencias de Mascotas",
+    "Encuesta sobre Cuidado de Mascotas",
+    "Encuesta sobre Razas de Mascotas",
+    "Encuesta sobre Adopción de Mascotas",
+    "Encuesta sobre Alimentación de Mascotas",
+    "Encuesta sobre Salud de Mascotas",
+    "Encuesta sobre Entretenimiento para Mascotas"
+];
 
+const preguntas = [
+    "¿Tienes alguna mascota en casa?",
+    "¿Cuál es tu mascota favorita?",
+    "¿Qué tipo de cuidados le das a tu mascota?",
+    "¿Qué raza de mascota prefieres?",
+    "¿Has pensado en adoptar una mascota?",
+    "¿Qué alimentación das a tu mascota?",
+    "¿Cómo cuidas la salud de tu mascota?",
+    "¿Cómo entretienes a tu mascota en casa?"
+];
+
+const opciones = [
+    ["Sí", "No"],
+    ["Perro", "Gato", "Ave", "Reptil", "Roedor"],
+    ["Veterinario regular", "Baños frecuentes", "Paseos diarios"],
+    ["Labrador Retriever", "Siamés", "Canario", "Iguana"],
+    ["Sí", "No, pero estoy considerándolo", "No"],
+    ["Alimento seco", "Alimento húmedo", "Dieta especializada"],
+    ["Vacunas anuales", "Control de parásitos", "Visitas al veterinario"],
+    ["Juguetes interactivos", "Paseos al parque", "Juegos en casa"]
+];
+```
+Inicializaremos el proyecto invocando los métodos de las clases anteriormente creadas y escribiremos el log en la consola del navegador:
+```javascript
+const encuestaManager = new EncuestaMain();
+encuestaManager.crearEncuestas(8, nombres, preguntas, opciones);
+encuestaManager.presentarEncuestas();
+
+console.log(encuestaManager.obtenerEncuestas());
+```
