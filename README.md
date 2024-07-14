@@ -25,7 +25,22 @@ class Encuesta {
 - El valor de la respuesta (-1) debe ser mayor a cero y estár dentro del rango del tamaño del arreglo opciones.
 - En caso de ser una opción válida, se asigna al atributo respuestaUsuario la posición seleccionada del arreglo opciones.
 - En caso de no ingresar una opción válida, retorna falso, para reinisistir al Usuario.
+```javascript
+    responderEncuesta() {
 
+        let opcionesTexto = this.opciones.map((opcion, index) => `${index + 1}. ${opcion}`).join('\n');
+        let respuesta = prompt(`${this.nombre}\n\n${this.pregunta}\n\nOpciones:\n${opcionesTexto}`);
+        let respuestaIndex = parseInt(respuesta) - 1;
+
+        if (respuestaIndex >= 0 && respuestaIndex < this.opciones.length) {
+            this.respuestaUsuario = this.opciones[respuestaIndex];
+            return true;
+        } else {
+            alert("Respuesta inválida. Inténtalo de nuevo.");
+            return false;
+        }
+    }
+```
  
 En la misma clase, adicionalmente, generamos el método para obtener las respuestas del Usuario:
 ```javascript
